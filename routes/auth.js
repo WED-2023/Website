@@ -16,7 +16,6 @@ router.post("/Register", async (req, res, next) => {
       country: req.body.country,
       password: req.body.password,
       email: req.body.email,
-      profilePic: req.body.profilePic
     }
     let users = [];
     users = await DButils.execQuery("SELECT username from users");
@@ -58,7 +57,7 @@ router.post("/Login", async (req, res, next) => {
     }
 
     // Set cookie
-    req.session.user_id = user.user_id;
+    req.session.username = user.username;
 
 
     // return cookie

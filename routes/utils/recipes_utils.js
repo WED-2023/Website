@@ -13,7 +13,8 @@ async function getRecipeInformation(recipe_id) {
     return await axios.get(`${api_domain}/${recipe_id}/information`, {
         params: {
             includeNutrition: false,
-            apiKey: process.env.spooncular_apiKey
+            // apiKey: process.env.spooncular_apiKey
+            apikey:"0d0cd3fd33f045e884781cc1c28244ce"
         }
     });
 }
@@ -37,6 +38,28 @@ async function getRecipeDetails(recipe_id) {
     }
 }
 
+async function getRecipeDetails(recipe_id) {
+    const recipe_info = await axios.get(`${api_domain}/${recipe_id}/information`, {
+        params: {
+            includeNutrition: false,
+            apiKey: "0d0cd3fd33f045e884781cc1c28244ce"
+        }
+    }); 
+    let { id, title, readyInMinutes, image, aggregateLikes, vegan, vegetarian, glutenFree } = recipe_info.data;
+    
+    return {
+        id: id,
+        title: title,
+        readyInMinutes: readyInMinutes,
+        image: image,
+        popularity: aggregateLikes,
+        vegan: vegan,
+        vegetarian: vegetarian,
+        glutenFree: glutenFree,   
+    }
+}
+
+
 async function searchRecipe(recipeName, cuisine, diet, intolerance, number, username) {
     const response = await axios.get(`${api_domain}/complexSearch`, {
         params: {
@@ -53,8 +76,9 @@ async function searchRecipe(recipeName, cuisine, diet, intolerance, number, user
 }
 
 
-
 exports.getRecipeDetails = getRecipeDetails;
-
+exports.getRecipeInformation = getRecipeInformation;
+exports.searchRecipe = searchRecipe;
+// exports.randomRecipes = randomRecipes;
 
 
