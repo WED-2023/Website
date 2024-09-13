@@ -43,7 +43,7 @@ router.post("/Login", async (req, res, next) => {
     // check that username exists
     const users = await DButils.execQuery("SELECT username FROM users");
     if (!users.find((x) => x.username === req.body.username))
-      throw { status: 401, message: "Username or Password incorrect" };
+      throw { status: 401, message: "Username or Password incorrect 1 " + req.body.username};
 
     // check that the password is correct
     const user = (
@@ -53,12 +53,10 @@ router.post("/Login", async (req, res, next) => {
     )[0];
 
     if (!bcrypt.compareSync(req.body.password, user.password)) {
-      throw { status: 401, message: "Username or Password incorrect" };
+      throw { status: 401, message: "Username or Password incorrect 2 " +req.body.password+ "|" +user.password };
     }
-
     // Set cookie
     req.session.username = user.username;
-
 
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true });
