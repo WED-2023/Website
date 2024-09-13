@@ -17,7 +17,6 @@ router.get("/search", async (req, res, next) => {
   }
 });
 
-
 /**
  * This path returns 3 random recipes to use when the site is opens
  */
@@ -32,9 +31,6 @@ router.get("/random", async (req, res, next) => {
   }
 });
 
-
-
-
 /**
  * This path returns full details of a recipe by its id
  */
@@ -46,9 +42,6 @@ router.get("/:recipeId", async (req, res, next) => {
     next(error);
   }
 });
-
-
-
 
 
 module.exports = router;
