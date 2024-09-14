@@ -27,7 +27,7 @@ app.use(
 app.use(express.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "public"))); //To serve static files such as images, CSS files, and JavaScript files
 //local:
-//app.use(express.static(path.join(__dirname, "dist"))); //local
+// app.use(express.static(path.join(__dirname, "dist")));
 //remote:
 app.use(express.static(path.join(__dirname, '../assignment2-1-208897991_208009845/dist')));
 app.get("/",function(req,res)
