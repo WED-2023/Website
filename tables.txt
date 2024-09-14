@@ -29,7 +29,7 @@ CREATE TABLE familyrecipes (
 );
 
 CREATE TABLE FavoriteRecipes (
-    recipeId VARCHAR(50) NOT NULL,
+    recipeId INT NOT NULL,
     username VARCHAR(50) NOT NULL,
     PRIMARY KEY (recipeId, username),
     FOREIGN KEY (username) REFERENCES Users(username)
