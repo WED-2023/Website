@@ -72,4 +72,22 @@ router.get('/favorites', async (req,res,next) => {
   }
 });
 
+router.post('/addmyRecipe', async (req, res, next) => {
+  try {
+    const { recipeId, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions } = req.body;
+
+    if (!recipeId || !title || !readyInMinutes) {
+      return res.status(400).send("Missing required fields");
+    }
+
+    await DButils.execQuery(
+      `INSERT INTO myrecipes (recipeId, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions) 
+       VALUES ('${recipeId}', '${image}', '${title}', '${readyInMinutes}', '${aggregateLikes}', '${vegetarian}', '${vegan}', '${glutenFree}', '${summary}', '${analyzedInstructions}', '${instructions}')`
+    );
+
+    res.status(201).send("Recipe successfully added");
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
