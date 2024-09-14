@@ -7,38 +7,26 @@ const api_domain = "https://api.spoonacular.com/recipes";
  */
 
 
-async function getRecipeInformation(recipe_id) {
-    // if the recipe in the table return the recipe from the table
-    // else, get the recipe from the spooncular api
-
+async function getRecipeInformationPreview(recipe_id) {
     return await axios.get(`${api_domain}/${recipe_id}/information`, {
         params: {
             includeNutrition: false,
             apiKey: process.env.spooncular_apiKey
         }
-        
     });
 }
 
-
-
 async function getRecipeDetails(recipe_id) {
-    let recipe_info = await getRecipeInformation(recipe_id);
-    let { id, title, readyInMinutes, image, aggregateLikes, vegan, vegetarian, glutenFree } = recipe_info.data;
-
-    return {
-        id: id,
-        title: title,
-        readyInMinutes: readyInMinutes,
-        image: image,
-        popularity: aggregateLikes,
-        vegan: vegan,
-        vegetarian: vegetarian,
-        glutenFree: glutenFree,
+        const response = await axios.get(`${api_domain}/${recipe_id}/information`, {
+            params: {
+            includeNutrition: true,
+            apiKey: process.env.spooncular_apiKey
+            }
+        });
         
-    }
+        const { id, ...rest } = response.data;
+        return { recipeid: id, ...rest };
 }
-
 
 async function searchRecipe(recipeName, cuisine, diet, intolerance, number, username) {
     const response = await axios.get(`${api_domain}/complexSearch`, {
@@ -65,7 +53,7 @@ async function getRecipesPreview(recipe_ids, username) {
 
     // Loop through each recipe ID and get its details
     for (let recipe_id of recipe_ids) {
-        let recipeDetails = await getRecipeDetails(recipe_id); // Using your existing getRecipeDetails function
+        let recipeDetails = await getRecipeInformationPreview(recipe_id); // Using your existing getRecipeDetails function
 
         // Add relevant recipe details to the preview array
         recipesPreview.push({
@@ -73,7 +61,7 @@ async function getRecipesPreview(recipe_ids, username) {
             title: recipeDetails.title,
             readyInMinutes: recipeDetails.readyInMinutes,
             image: recipeDetails.image,
-            popularity: recipeDetails.popularity,
+            aggregateLikes: recipeDetails.aggregateLikes,
             vegan: recipeDetails.vegan,
             vegetarian: recipeDetails.vegetarian,
             glutenFree: recipeDetails.glutenFree,
@@ -104,7 +92,7 @@ async function getRandomRecipes(number) {
                 title: recipe.title,
                 readyInMinutes: recipe.readyInMinutes,
                 image: recipe.image,
-                popularity: recipe.aggregateLikes,
+                aggregateLikes: recipe.aggregateLikes,
                 vegan: recipe.vegan,
                 vegetarian: recipe.vegetarian,
                 glutenFree: recipe.glutenFree,
@@ -121,7 +109,6 @@ async function getRandomRecipes(number) {
 exports.getRandomRecipes = getRandomRecipes;
 exports.getRecipesPreview = getRecipesPreview;
 exports.getRecipeDetails = getRecipeDetails;
-exports.getRecipeInformation = getRecipeInformation;
 exports.searchRecipe = searchRecipe;
 // exports.randomRecipes = randomRecipes;
 
