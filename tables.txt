@@ -25,7 +25,8 @@ CREATE TABLE familyrecipes (
     glutenFree BOOLEAN,
     summary TEXT,
     analyzedInstructions TEXT,
-    instructions TEXT
+    instructions TEXT,
+    extendedIngredients TEXT,
 );
 
 CREATE TABLE FavoriteRecipes (

@@ -53,7 +53,7 @@ async function getRecipesPreview(recipe_ids, username) {
 
     // Loop through each recipe ID and get its details
     for (let recipe_id of recipe_ids) {
-        let recipeDetails = await getRecipeDetails(recipe_id); // Using your existing getRecipeDetails function
+        let recipeDetails = await getRecipeInformationPreview(recipe_id); // Using your existing getRecipeDetails function
 
         // Add relevant recipe details to the preview array
         recipesPreview.push({
