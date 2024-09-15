@@ -4,9 +4,9 @@ const recipes_utils = require("./utils/recipes_utils");
 
 router.get("/", (req, res) => res.send("I'm here"));
 
-/**
- * This path is for searching a recipe
- */
+// /**
+//  * This path is for searching a recipe
+//  */
 router.get("/search", async (req, res, next) => {
   try {
     const { recipeName, cuisine, diet, intolerance, number } = req.query; // Change from req.body to req.query

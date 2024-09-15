@@ -23,7 +23,7 @@ async function getaddmyRecipe(req) {
     
     return recipes;
 }
-exports.getaddmyRecipe = getaddmyRecipe;
+
 exports.getaddmyRecipe = getaddmyRecipe;
 exports.markAsFavorite = markAsFavorite;
 exports.getFavoriteRecipes = getFavoriteRecipes;

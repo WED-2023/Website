@@ -1,5 +1,6 @@
 const axios = require("axios");
 const api_domain = "https://api.spoonacular.com/recipes";
+const DButils = require("./DButils");
 
 /**
  * Get recipes list from spooncular response and extract the relevant recipe data for preview
@@ -105,7 +106,30 @@ async function getRandomRecipes(number) {
         throw error;
     }
 }
+async function getFavoriteRecipesByUsername(username) {
+    if (!username) {
+        throw new Error('Username is required');
+    }
+    try {
+        const favoriteRecipes = await DButils.execQuery(`SELECT recipeid FROM favoriterecipes WHERE username  = '${username}'`);
+        return favoriteRecipes.map(recipe => recipe.recipeid);
+    } catch (error) {
+        console.error(`Error fetching favorite recipes for username: ${username}`, error);
+        throw new Error('Error fetching favorite recipes');
+    }
+}
 
+async function getFavoritesRecipes(req) {
+    const username = req.session.username;
+    console.log(username);
+    if (!username) {
+        throw new Error('User is not authenticated');
+    }
+    const recipeIds = await getFavoriteRecipesByUsername(username);
+    return getRecipesPreview(recipeIds, username);
+}
+
+exports.getFavoritesRecipes = getFavoritesRecipes;
 exports.getRandomRecipes = getRandomRecipes;
 exports.getRecipesPreview = getRecipesPreview;
 exports.getRecipeDetails = getRecipeDetails;
