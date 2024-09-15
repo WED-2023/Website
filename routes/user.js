@@ -111,8 +111,16 @@ router.post('/addmyRecipe', async (req, res, next) => {
   }
 });
 
+router.get('/addmyRecipe', async (req, res, next) => {
+  try {
+    const results = await user_utils.getaddmyRecipe(req); 
+    res.status(200).send(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/favoritesrecipe', async (req, res, next) => {
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
   try {
 
     const results = await recipe_utils.getFavoritesRecipes(req);
