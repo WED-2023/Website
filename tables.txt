@@ -48,5 +48,6 @@ CREATE TABLE myrecipes (
     summary TEXT,
     analyzedInstructions TEXT,
     instructions TEXT,
+    extendedIngredients TEXT,
     PRIMARY KEY (recipeId, username)  -- מפתח ראשי משולב של recipeId ו-username
 );

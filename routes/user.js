@@ -92,7 +92,7 @@ router.get('/familyRecipes', async (req,res,next) => {
 
 router.post('/addmyRecipe', async (req, res, next) => {
   try {
-    const { recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions } = req.body;
+    const { recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions, extendedIngredients } = req.body;
 
     
     if (!recipeId || !title || !readyInMinutes) {
@@ -102,8 +102,8 @@ router.post('/addmyRecipe', async (req, res, next) => {
      const INTvegan = vegan ? 1 : 0;
      const INTglutenFree = glutenFree ? 1 : 0;
     await DButils.execQuery(
-      `INSERT INTO myrecipes (recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions) 
-       VALUES ('${recipeId}','${username}', '${image}', '${title}', '${readyInMinutes}', '${aggregateLikes}', '${INTvegetarian}', '${INTvegan}', '${INTglutenFree}', '${summary}', '${analyzedInstructions}', '${instructions}')`
+      `INSERT INTO myrecipes (recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions, extendedIngredients) 
+       VALUES ('${recipeId}','${username}', '${image}', '${title}', '${readyInMinutes}', '${aggregateLikes}', '${INTvegetarian}', '${INTvegan}', '${INTglutenFree}', '${summary}', '${analyzedInstructions}', '${instructions}', '${extendedIngredients}')`
     );
     res.status(201).send("Recipe successfully added");
   } catch (error) {
