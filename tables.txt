@@ -35,19 +35,20 @@ CREATE TABLE FavoriteRecipes (
     PRIMARY KEY (recipeId, username),
     FOREIGN KEY (username) REFERENCES Users(username)
 );
+
 CREATE TABLE myrecipes (
-    recipeId INT,
+    recipeId INT AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
     image VARCHAR(255),
     title VARCHAR(255),
     readyInMinutes INT,
     aggregateLikes INT,
+    servings INT,
     vegetarian BOOLEAN,
     vegan BOOLEAN,
     glutenFree BOOLEAN,
     summary TEXT,
-    analyzedInstructions TEXT,
     instructions TEXT,
-    extendedIngredients TEXT,
-    PRIMARY KEY (recipeId, username)  -- מפתח ראשי משולב של recipeId ו-username
+    extendedIngredients JSON,
+    PRIMARY KEY (recipeId, username)
 );

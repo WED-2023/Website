@@ -1,0 +1,46 @@
+# must:
+- [x] cookies
+- [ ] fix API document
+- [ ] ingredients not working  
+- [ ] Chen: update readme how to run it
+- [x] register name should be 3 letters long and not longer than 8
+- [x] add serving to the RecipeViewPage
+- [ ] save last search in cookies
+- [ ] When uploading to the server on BGU, need to swap all the relevant variable and to recheck everthing
+- [ ] delete all the mock functions in the frontend
+- [x] add servings to db and modal
+- [ ] fix when generating new meals, do not show favorite
+# Nice to have
+- [x] fix last seen recipe
+- [x] when going back from viewpage, do not refersh everthing
+- [ ] align the pictures of us in the abous page
+- [ ] recipe preperation page make it so it will pull from API
+- [ ] use all the data from the api call in the recipePreparingPage
+- [ ] add bar to to recipePreparingPage
+- [ ] save the state in recipePreparingPage
+- [ ] recipe preparing and not meal preparing 
+- [ ] meal preparation bonus
+# Least important
+- [ ] When we don't have any favorites recipes, show something to the user
+- [ ] fix the recipe functions in the server side
+- [x] No relevant results ***were*** found
+- [ ] remove aggragated likes from Modal
+# Need to reorder:
+
+# Finished
+- [x] delete from favorites
+- [x] add first name and last name
+- [x] favorites fix status
+- [x] favorites check when first signed
+- [x] Show the recipe
+- [x] create db for myrecipes
+- [x] when entering new recipe in Modal, add to the myrecipes
+- [x] create serverside for myrecipes
+- [x] replace mock getmyrecipes with the real recipes
+- [x] recipe view page of my recipe
+- [x] family recipe View Page
+- [x] Ofir: when clicking "my favorite recipes" show favorite recipes
+- [x] Recipe Preparing Page add option to reduce quantity
+- [x] check all the warning about recipeId
+- [x] fix search
+- [x] likes

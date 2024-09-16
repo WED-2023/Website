@@ -92,18 +92,18 @@ router.get('/familyRecipes', async (req,res,next) => {
 
 router.post('/addmyRecipe', async (req, res, next) => {
   try {
-    const { recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions, extendedIngredients } = req.body;
+    const { username, image, title, readyInMinutes, aggregateLikes, servings, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions, extendedIngredients } = req.body;
 
     
-    if (!recipeId || !title || !readyInMinutes) {
+    if (!title || !readyInMinutes) {
       return res.status(400).send("Missing required fields");
     }
      const INTvegetarian = vegetarian ? 1 : 0;
      const INTvegan = vegan ? 1 : 0;
      const INTglutenFree = glutenFree ? 1 : 0;
     await DButils.execQuery(
-      `INSERT INTO myrecipes (recipeId,username, image, title, readyInMinutes, aggregateLikes, vegetarian, vegan, glutenFree, summary, analyzedInstructions, instructions, extendedIngredients) 
-       VALUES ('${recipeId}','${username}', '${image}', '${title}', '${readyInMinutes}', '${aggregateLikes}', '${INTvegetarian}', '${INTvegan}', '${INTglutenFree}', '${summary}', '${analyzedInstructions}', '${instructions}', '${extendedIngredients}')`
+      `INSERT INTO myrecipes (username, image, title, readyInMinutes, aggregateLikes, servings, vegetarian, vegan, glutenFree, summary, instructions, extendedIngredients) 
+       VALUES ('${username}', '${image}', '${title}', '${readyInMinutes}', '${aggregateLikes}', '${servings}','${INTvegetarian}', '${INTvegan}', '${INTglutenFree}', '${summary}', '${instructions}', '${extendedIngredients}')`
     );
     res.status(201).send("Recipe successfully added");
   } catch (error) {

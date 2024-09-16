@@ -12,7 +12,7 @@ async function getRecipeInformationPreview(recipe_id) {
     return await axios.get(`${api_domain}/${recipe_id}/information`, {
         params: {
             includeNutrition: false,
-            apiKey: process.env.spooncular_apiKey
+            apiKey: process.env.VUE_APP_spooncular_apiKey
         }
     });
 }
@@ -21,7 +21,7 @@ async function getRecipeDetails(recipe_id) {
         const response = await axios.get(`${api_domain}/${recipe_id}/information`, {
             params: {
             includeNutrition: true,
-            apiKey: process.env.spooncular_apiKey
+            apiKey: process.env.VUE_APP_spooncular_apiKey
             }
         });
         
@@ -37,7 +37,7 @@ async function searchRecipe(recipeName, cuisine, diet, intolerance, number, user
             diet: diet,
             intolerances: intolerance,
             number: number,
-            apiKey: process.env.spooncular_apiKey
+            apiKey: process.env.VUE_APP_spooncular_apiKey
         }
     });
 
@@ -83,7 +83,7 @@ async function getRandomRecipes(number) {
         const response = await axios.get(`${api_domain}/random`, {
             params: {
                 number: number,
-                apiKey: process.env.spooncular_apiKey
+                apiKey: process.env.VUE_APP_spooncular_apiKey
             }
         });
 
