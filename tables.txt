@@ -1,4 +1,3 @@
--- Active: 1726208688190@@127.0.0.1@3306@chenofirdb
 CREATE TABLE table_name(  
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
     create_time DATETIME COMMENT 'Create Time',
@@ -15,18 +14,18 @@ CREATE TABLE users (
 );
 
 CREATE TABLE familyrecipes (
-    recipeId INT PRIMARY KEY,
+    recipeId INT AUTO_INCREMENT PRIMARY KEY,
     image VARCHAR(255),
     title VARCHAR(255),
     readyInMinutes INT,
     aggregateLikes INT,
+    servings INT,
     vegetarian BOOLEAN,
     vegan BOOLEAN,
     glutenFree BOOLEAN,
     summary TEXT,
-    analyzedInstructions TEXT,
     instructions TEXT,
-    extendedIngredients TEXT,
+    extendedIngredients JSON,
 );
 
 CREATE TABLE FavoriteRecipes (
