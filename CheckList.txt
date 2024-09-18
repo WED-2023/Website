@@ -5,11 +5,11 @@
 - [ ] Chen: update readme how to run it
 - [x] register name should be 3 letters long and not longer than 8
 - [x] add serving to the RecipeViewPage
-- [ ] save last search in cookies
+- [x] save last search in localStorage
 - [ ] When uploading to the server on BGU, need to swap all the relevant variable and to recheck everthing
 - [ ] delete all the mock functions in the frontend
 - [x] add servings to db and modal
-- [ ] fix when generating new meals, do not show favorite
+- [x] fix when generating new meals, do not show favorite (like?)
 # Nice to have
 - [x] fix last seen recipe
 - [x] when going back from viewpage, do not refersh everthing
@@ -18,7 +18,7 @@
 - [ ] use all the data from the api call in the recipePreparingPage
 - [ ] add bar to to recipePreparingPage
 - [ ] save the state in recipePreparingPage
-- [ ] recipe preparing and not meal preparing 
+- [x] recipe preparing and not meal preparing 
 - [ ] meal preparation bonus
 # Least important
 - [ ] When we don't have any favorites recipes, show something to the user
