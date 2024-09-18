@@ -2,21 +2,6 @@ const axios = require("axios");
 const api_domain = "https://api.spoonacular.com/recipes";
 const DButils = require("./DButils");
 
-/**
- * Get recipes list from spooncular response and extract the relevant recipe data for preview
- * @param {*} recipes_info 
- */
-
-
-async function getRecipeInformationPreview(recipe_id) {
-    return await axios.get(`${api_domain}/${recipe_id}/information`, {
-        params: {
-            includeNutrition: false,
-            apiKey: process.env.VUE_APP_spooncular_apiKey
-        }
-    });
-}
-
 async function getRecipeDetails(recipe_id) {
         const response = await axios.get(`${api_domain}/${recipe_id}/information`, {
             params: {
