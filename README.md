@@ -1,4 +1,8 @@
 # Welcome to Chen's and Ofir's Website!
+
+Chen Frydman 208009845 </br>
+Ofir Tamir 208897991
+
 This Website was created for a project in the course 'Internet Programming Environments'.
 This Website was created for a project in the course 'Internet Programming Environments'.
 
