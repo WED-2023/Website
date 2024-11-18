@@ -29,8 +29,9 @@ router.post('/favorites', async (req,res,next) => {
   try{
     const username = req.session.username;
     const recipeId = req.body.recipeId;
-    console.log(username);
     console.log(recipeId);
+    console.log(username);
+  
 
     await user_utils.markAsFavorite(username,recipeId);
     
